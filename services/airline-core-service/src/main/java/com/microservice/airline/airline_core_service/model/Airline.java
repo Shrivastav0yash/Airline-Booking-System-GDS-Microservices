@@ -1,4 +1,4 @@
-package com.microservice.airline.airline_core_service.modal;
+package com.microservice.airline.airline_core_service.model;
 
 import com.microservice.airline.embeddable.Support;
 import com.microservice.airline.enums.AirlineStatus;
@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
@@ -15,6 +16,7 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Airline {
 
     @Id

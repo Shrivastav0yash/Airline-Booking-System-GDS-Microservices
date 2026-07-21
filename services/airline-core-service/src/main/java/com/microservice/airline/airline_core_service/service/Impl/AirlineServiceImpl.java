@@ -1,7 +1,7 @@
 package com.microservice.airline.airline_core_service.service.Impl;
 
 import com.microservice.airline.airline_core_service.mapper.AirlineMapper;
-import com.microservice.airline.airline_core_service.modal.Airline;
+import com.microservice.airline.airline_core_service.model.Airline;
 import com.microservice.airline.airline_core_service.repository.AirlineRepository;
 import com.microservice.airline.airline_core_service.service.AirlineService;
 import com.microservice.airline.enums.AirlineStatus;

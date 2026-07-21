@@ -1,6 +1,6 @@
 package com.microservice.airline.airline_core_service.mapper;
 
-import com.microservice.airline.airline_core_service.modal.Airline;
+import com.microservice.airline.airline_core_service.model.Airline;
 import com.microservice.airline.embeddable.Support;
 import com.microservice.airline.payload.request.AirlineRequest;
 import com.microservice.airline.payload.response.AirlineResponse;
