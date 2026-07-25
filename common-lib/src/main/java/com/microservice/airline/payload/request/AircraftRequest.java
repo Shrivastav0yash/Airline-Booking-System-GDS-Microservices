@@ -2,7 +2,6 @@ package com.microservice.airline.payload.request;
 
 
 import com.microservice.airline.enums.AircraftStatus;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -65,12 +64,5 @@ public class AircraftRequest {
     private Boolean isAvailable;
 
     private Long currentAirportId;
-
-
-
-
-
-
-
 
 }
