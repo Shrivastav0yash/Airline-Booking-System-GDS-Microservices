@@ -47,7 +47,5 @@ public class AircraftResponse {
     private Instant createdAt;
     private Instant updatedAt;
 
-
-
 }
 
