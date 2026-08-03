@@ -71,7 +71,7 @@ public class AirlineController {
             @RequestHeader("X-User-Id") long userId
     ) throws Exception {
         airlineService.deleteAirline(id, userId);
-        ApiResponse apiResponse = new ApiResponse("Airline delete sucessfully");
+        ApiResponse apiResponse = new ApiResponse("Airline delete successfully");
         return ResponseEntity.ok(apiResponse);
     }
 
@@ -89,7 +89,5 @@ public class AirlineController {
     public ResponseEntity<AirlineResponse> bandAirline(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok(airlineService.changeStatusByAdmin(id, AirlineStatus.BANNED));
     }
-
-
 
 }
