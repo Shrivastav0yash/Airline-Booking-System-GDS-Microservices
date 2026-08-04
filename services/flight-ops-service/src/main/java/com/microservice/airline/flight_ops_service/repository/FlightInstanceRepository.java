@@ -12,20 +12,26 @@ import java.time.LocalDateTime;
 public interface FlightInstanceRepository extends JpaRepository<FlightInstance, Long> {
 
     @Query("""
-        select fi from FlightInstance fi
-         where fi.airlineId =: airlineId
-         and (: departureAirportId is null or fi.departureAirportId =: departureAirportId)
-         and (:arrivalAirportId is null or fi.arrivalAirportId =: arrivalAirportId)
-         and (:flightId is null or fi.flight.Id =: flightId)
-         and (:dayStart is null or fi.departureDateTime >= :dayStart)
-         and (:dayEnd is null or fi.arrivalDateTime <= :dayEnd)
-    """)
-    Page<FlightInstance> findByAirlineId(@Param("airlineId") Long airlineId,
-                                         @Param("departureAirportId") Long departureAirportId,
-                                         @Param("arrivalAirportId") Long arrivalAirportId,
-                                         @Param("flightId")  Long flightId,
-                                         @Param("dayStart")LocalDateTime dayStart,
-                                         @Param("dayEnd") LocalDateTime dayEnd,
-                                         Pageable pageable
-                                         );
+    SELECT fi FROM FlightInstance fi
+    WHERE fi.airlineId = :airlineId
+    AND (:departureAirportId IS NULL
+         OR fi.departureAirportId = :departureAirportId)
+    AND (:arrivalAirportId IS NULL
+         OR fi.arrivalAirportId = :arrivalAirportId)
+    AND (:flightId IS NULL
+         OR fi.flight.id = :flightId)
+    AND (:dayStart IS NULL
+         OR fi.departureDateTime >= :dayStart)
+    AND (:dayEnd IS NULL
+         OR fi.arrivalDateTime <= :dayEnd)
+""")
+    Page<FlightInstance> findByAirlineId(
+            @Param("airlineId") Long airlineId,
+            @Param("departureAirportId") Long departureAirportId,
+            @Param("arrivalAirportId") Long arrivalAirportId,
+            @Param("flightId") Long flightId,
+            @Param("dayStart") LocalDateTime dayStart,
+            @Param("dayEnd") LocalDateTime dayEnd,
+            Pageable pageable
+    );
 }

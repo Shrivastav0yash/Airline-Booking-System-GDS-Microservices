@@ -36,7 +36,8 @@ public class FlightInstanceController {
         return ResponseEntity.ok(flightInstanceService.getFlightInstanceById(id));
     }
 
-    public ResponseEntity<Page<FlightInstanceResponse>> getAByAirlineId(
+    @GetMapping
+    public ResponseEntity<Page<FlightInstanceResponse>> getFlightInstanceByAirlineId(
             @RequestHeader("X-Airline-Id") Long airlineId,
             @RequestParam(required = false) Long departureAirportId,
             @RequestParam(required = false) Long arrivalAirportId,

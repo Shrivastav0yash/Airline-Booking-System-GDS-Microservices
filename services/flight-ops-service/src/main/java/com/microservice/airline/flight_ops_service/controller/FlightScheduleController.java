@@ -27,14 +27,14 @@ public class FlightScheduleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FlightScheduleResponse> getFlightSchedule(
+    public ResponseEntity<FlightScheduleResponse> getFlightScheduleById(
             @PathVariable Long id
     ) throws Exception {
         return ResponseEntity.ok(flightScheduleService.getFlightScheduleById(id));
     }
 
     @GetMapping
-    public ResponseEntity<?> getFlightSchedules(
+    public ResponseEntity<?> getFlightSchedulesByAirlineId(
             @RequestHeader("X-Airline-Id") Long airlineId
     ){
         return ResponseEntity.ok(flightScheduleService.getFlightScheduleByAirline(airlineId));
