@@ -59,8 +59,7 @@ public class FlightServiceImpl implements FlightService {
             throw new Exception("flight already exist with this flight number");
         }
         FlightMapper.updateEntity(flightRequest, existingFlight);
-        Flight updatedFlight = FlightMapper.toEntity(flightRequest);
-        flightRepository.save(updatedFlight);
+        Flight updatedFlight = flightRepository.save(existingFlight);
         return convertToFlightResponse(updatedFlight);
     }
 
@@ -77,8 +76,7 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public void deleteFlight(Long airlineId, Long id) throws Exception {
         //todo watch airline Id
-        // for delete that's why it is empty
-        Flight existingFlight = flightRepository.findByAirlineIdAndIdNot(airlineId,id).orElseThrow(
+        Flight existingFlight = flightRepository.findByAirlineIdAndId(airlineId,id).orElseThrow(
                 ()-> new Exception("Flight not exist with this id")
         );
         flightRepository.delete(existingFlight);

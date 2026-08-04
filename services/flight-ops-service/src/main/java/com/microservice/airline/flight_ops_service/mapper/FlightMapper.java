@@ -42,14 +42,26 @@ public class FlightMapper {
                 .build();
     }
 
-    public static void updateEntity(FlightRequest request, Flight existing){
+    public static void updateEntity(FlightRequest request, Flight existing) {
 
-        if (request == null) return ;
-        if(request.getFlightNumber() != null) existing.setFlightNumber(request.getFlightNumber());
-        if(request.getAircraftId() != null) existing.setAircraftId(request.getAircraftId());
-        if(request.getAirlineId() != null) existing.setDepartureAirportId(request.getAirlineId());
-        if(request.getDepartureAirportId() != null) existing.setDepartureAirportId(request.getDepartureAirportId());
-        if(request.getArrivalAirportId() != null) existing.setArrivalAirportId(request.getArrivalAirportId());
-        if(request.getStatus() != null) existing.setStatus(request.getStatus());
+        if (request == null) return;
+
+        if (request.getFlightNumber() != null)
+            existing.setFlightNumber(request.getFlightNumber());
+
+        if (request.getAirlineId() != null)
+            existing.setAirlineId(request.getAirlineId());
+
+        if (request.getAircraftId() != null)
+            existing.setAircraftId(request.getAircraftId());
+
+        if (request.getDepartureAirportId() != null)
+            existing.setDepartureAirportId(request.getDepartureAirportId());
+
+        if (request.getArrivalAirportId() != null)
+            existing.setArrivalAirportId(request.getArrivalAirportId());
+
+        if (request.getStatus() != null)
+            existing.setStatus(request.getStatus());
     }
 }

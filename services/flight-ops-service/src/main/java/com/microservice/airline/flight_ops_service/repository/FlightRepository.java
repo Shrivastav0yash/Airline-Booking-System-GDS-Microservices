@@ -13,9 +13,9 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query("""
         select f from Flight f
-        where f.airlineId =: airlineId
-        and (:depId is null or f.departureAirportId =: depId)
-        and (:arrId is null or f.arrivalAirportId =: arrId)
+        where f.airlineId = :airlineId
+        and (:depId is null or f.departureAirportId = :depId)
+        and (:arrId is null or f.arrivalAirportId = :arrId)
     """
     )
     Page<Flight> findByAirlineId(@Param("airlineId") Long airlineId,
@@ -27,5 +27,5 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     boolean existsByFlightNumberAndIdNot(String flightNumber, Long id);
 
-    Optional<Flight> findByAirlineIdAndIdNot(Long airlineId, Long id);
+    Optional<Flight> findByAirlineIdAndId(Long airlineId, Long id);
 }
