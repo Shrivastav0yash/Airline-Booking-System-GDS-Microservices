@@ -3,7 +3,6 @@ package com.microservice.airline.pricing_service.controller;
 import com.microservice.airline.payload.request.FareRequest;
 import com.microservice.airline.payload.response.ApiResponse;
 import com.microservice.airline.payload.response.FareResponse;
-import com.microservice.airline.pricing_service.model.Fare;
 import com.microservice.airline.pricing_service.service.FareService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
