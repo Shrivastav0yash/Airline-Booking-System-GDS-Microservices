@@ -1,38 +1,51 @@
-package com.microservice.airline.payload.response;
+package com.microservice.airline.payload.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.Instant;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BaggagePolicyResponse {
-    private Long id;
+public class BaggagePolicyRequest {
 
+    @NotBlank(message = "Baggage policy name is required")
     private String name;
+
+    @NotNull(message = "Fare ID is required")
+    private Long fareId;
+
     private String description;
 
+    @PositiveOrZero
     private Double cabinBaggageMaxWeight;
+
+    @PositiveOrZero
     private Integer cabinBaggagePieces;
+
+    @PositiveOrZero
     private Integer cabinBaggageWeightPerPiece;
+
+
     private Integer cabinBaggageMaxDimensions;
 
+    @PositiveOrZero
     private Double checkInBaggageMaxWeight;
+
+    @PositiveOrZero
     private Integer checkInBaggagePieces;
+
+    @PositiveOrZero
     private Double checkInBaggageWeightPerPiece;
+
+    @PositiveOrZero
     private Integer freeCheckedBagsAllowance;
 
+    //Benefits
     private Boolean priorityBaggage;
     private Boolean extraBaggageAllowance;
 
-    private Long airlineId;
-    private Long fareId;
 
-    private Instant createdAt;
-    private Instant updateAt;
 }

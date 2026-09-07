@@ -83,8 +83,7 @@ public class FareMapper {
                 .currentPrice(fare.getCurrentPrice())
                 .totalPrice(fare.getTotalPrice())
                 .fareLabel(fare.getFareLabel())
-                //todo : watch fare rules
-                //.fareRulesId(fare.getFareRules() != null ? fare.getFareRules().getId() : null)
+                .fareRuleId(fare.getFareRules() != null ? fare.getFareRules().getId() : null)
 
                 //Seat Benefits
                 .extraSeatSpace(fare.getSeatBenefits() != null ? fare.getSeatBenefits().getExtraSeatSpace() : false)
@@ -113,7 +112,9 @@ public class FareMapper {
                 .loungeAccess(fare.getPremiumServiceBenefits() != null ? fare.getPremiumServiceBenefits().getLoungeAccess() : false)
                 .airportTransfer(fare.getPremiumServiceBenefits() != null ? fare.getPremiumServiceBenefits().getAirportTransfer() : false)
 
-                //todo :need to create fare rules
+                .fareRules(fare.getFareRules() != null ? FareRulesMapper.toResponse(fare.getFareRules()) : null)
+                .baggagePolicy(fare.getBaggagePolicy() != null ? BaggagePolicyMapper.toResponse(fare.getBaggagePolicy()) : null)
+
                 .createdAt(fare.getCreatedAt())
                 .updatedAt(fare.getUpdatedAt())
                 .build();
