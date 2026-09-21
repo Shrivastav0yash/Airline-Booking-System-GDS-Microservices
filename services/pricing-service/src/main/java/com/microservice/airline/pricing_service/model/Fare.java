@@ -83,5 +83,4 @@ public class Fare {
         return baseFare + taxesAndFees + airlineFees + currentPrice;
     }
 
-
 }

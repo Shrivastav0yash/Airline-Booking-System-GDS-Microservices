@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PremiumServiceBenefits {
 
-    @Column(name = "priority_boarding", nullable = false)
+    @Column(name = "lounge_access", nullable = false)
     @Builder.Default
     private Boolean loungeAccess = false;
 
