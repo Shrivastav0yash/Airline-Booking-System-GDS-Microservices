@@ -31,10 +31,9 @@ public class CabinClass {
 
     private String description;
 
-    //todo : watch
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "seat_map_id")
-//    private SeatMap seatMap;
+    @OneToOne(mappedBy = "cabinClass", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "seat_map_id")
+    private SeatMap seatMap;
 
     @Column(nullable = false)
     private Long aircraftId;
