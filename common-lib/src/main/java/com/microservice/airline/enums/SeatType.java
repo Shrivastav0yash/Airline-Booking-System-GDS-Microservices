@@ -1,0 +1,9 @@
+package com.microservice.airline.enums;
+
+public enum SeatType {
+
+    WINDOW,
+    AISLE,
+    MIDDLE,
+    EXTRA_LEGROOM
+}

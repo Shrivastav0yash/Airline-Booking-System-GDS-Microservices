@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -30,9 +32,9 @@ public class SeatMap {
     @Column(nullable = false)
     private Long airlineId;
 
-    //todo : watch
-    //@OneToMany(mappedBy = "seatMap", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //private List<Seat> seats;
+
+    @OneToMany(mappedBy = "seatMap", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Seat> seats;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private CabinClass cabinClass;

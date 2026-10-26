@@ -8,6 +8,7 @@ import com.microservice.airline.seat_service.model.SeatMap;
 import com.microservice.airline.seat_service.repository.CabinClassRepository;
 import com.microservice.airline.seat_service.repository.SeatMapRepository;
 import com.microservice.airline.seat_service.service.SeatMapService;
+import com.microservice.airline.seat_service.service.SeatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class SeatMapServiceImpl implements SeatMapService {
 
     private final CabinClassRepository cabinClassRepository;
     private final SeatMapRepository seatMapRepository;
+    private final SeatService seatService;
 
     @Override
     public SeatMapResponse createSeatMap(Long airlineId, SeatMapRequest seatMapRequest) throws Exception {
@@ -34,7 +36,9 @@ public class SeatMapServiceImpl implements SeatMapService {
         seatMap.setAirlineId(airlineId);
         SeatMap savedSeatMap = seatMapRepository.save(seatMap);
 
-        //todo : seat related data is missing now
+        // Generate Seats
+
+        seatService.generateSeats(savedSeatMap.getId());
 
         return SeatMapMapper.toResponse(savedSeatMap);
     }
