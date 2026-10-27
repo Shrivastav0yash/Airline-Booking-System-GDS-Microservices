@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RequiredArgsConstructor
 @Service
 public class CabinClassServiceImpl implements CabinClassService {
@@ -27,7 +28,7 @@ public class CabinClassServiceImpl implements CabinClassService {
         }
         CabinClass cabinClass = CabinClassMapper.toEntity(cabinClassRequest);
         CabinClass savedCabinClass = cabinClassRepository.save(cabinClass);
-        return CabinClassMapper.toResponse(savedCabinClass);
+        return CabinClassMapper.toResponse(savedCabinClass, null);
     }
 
     @Override
@@ -36,21 +37,21 @@ public class CabinClassServiceImpl implements CabinClassService {
         CabinClass cabinClass = cabinClassRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Cabin class with ID " + id + " not found")
         );
-        return CabinClassMapper.toResponse(cabinClass);
+        return CabinClassMapper.toResponse(cabinClass, cabinClass.getSeatMap());
     }
 
     @Override
     public List<CabinClassResponse> getCabinClassByAircraftId(Long aircraftId) {
         return cabinClassRepository.findByAircraftId(aircraftId)
                 .stream()
-                .map(CabinClassMapper::toResponse)
+                .map(cc -> CabinClassMapper.toResponse(cc, cc.getSeatMap()))
                 .collect(Collectors.toList());
     }
 
     @Override
     public CabinClassResponse getCabinClassByAircraftIdAndName(Long aircraftId, CabinClassType name) {
         CabinClass cabinClass = cabinClassRepository.findByAircraftIdAndName(aircraftId, name);
-        return CabinClassMapper.toResponse(cabinClass);
+        return CabinClassMapper.toResponse(cabinClass, null);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class CabinClassServiceImpl implements CabinClassService {
         }
         CabinClassMapper.updateEntity(cabinClass, cabinClassRequest);
         CabinClass updatedCabinClass = cabinClassRepository.save(cabinClass);
-        return CabinClassMapper.toResponse(updatedCabinClass);
+        return CabinClassMapper.toResponse(updatedCabinClass, updatedCabinClass.getSeatMap());
     }
 
     @Override

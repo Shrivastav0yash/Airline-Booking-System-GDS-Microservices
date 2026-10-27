@@ -31,9 +31,8 @@ public class FlightInstanceCabin {
 
     private Integer bookedSeats = 0;
 
-    //todo : watch
-    //
-    //private List<SeatInstance> seats = new ArrayList<>();
+    @OneToMany(mappedBy = "flightInstanceCabin", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SeatInstance> seats = new ArrayList<>();
 
     public Integer getAvailableSeats(){
         return totalSeats - bookedSeats;

@@ -3,6 +3,7 @@ package com.microservice.airline.seat_service.mapper;
 import com.microservice.airline.payload.request.CabinClassRequest;
 import com.microservice.airline.payload.response.CabinClassResponse;
 import com.microservice.airline.seat_service.model.CabinClass;
+import com.microservice.airline.seat_service.model.SeatMap;
 
 public class CabinClassMapper {
 
@@ -23,7 +24,7 @@ public class CabinClassMapper {
                 .build();
     }
 
-    public static CabinClassResponse toResponse(CabinClass cabinClass){
+    public static CabinClassResponse toResponse(CabinClass cabinClass, SeatMap seatMap){
 
         if(cabinClass == null){return null;}
 
@@ -33,8 +34,7 @@ public class CabinClassMapper {
                 .code(cabinClass.getCode())
                 .description(cabinClass.getDescription())
                 .aircraftId(cabinClass.getAircraftId())
-                //todo: add seatMap to response
-               //.seatMap(seatMap != null ? SeatMapMapper.toResponse(seatMap) : null)
+               .seatMap(seatMap != null ? SeatMapMapper.toResponse(seatMap) : null)
                 .displayOrder(cabinClass.getDisplayOrder())
                 .isActive(cabinClass.getIsActive())
                 .isBookable(cabinClass.getIsBookable())
