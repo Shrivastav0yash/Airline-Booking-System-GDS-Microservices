@@ -63,7 +63,7 @@ public class FlightInstanceCabinServiceImpl implements FlightInstanceCabinServic
                                     1000.0,
                                     500.0
                             );
-                            SeatInstance seatInstance = SeatInstance.builder()
+                            return SeatInstance.builder()
                                     .flightId(request.getFlightId())
                                     .status(SeatAvailabilityStatus.AVAILABLE)
                                     .flightInstanceId(request.getFlightInstanceId())
@@ -73,7 +73,6 @@ public class FlightInstanceCabinServiceImpl implements FlightInstanceCabinServic
                                     .isBooked(false)
                                     .premiumSuperCharge(premiumSuperCharge)
                                     .build();
-                            return seatInstance;
                         }
                 ).toList();
 
