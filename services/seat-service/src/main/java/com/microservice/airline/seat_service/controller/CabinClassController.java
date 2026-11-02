@@ -62,7 +62,7 @@ public class CabinClassController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCabinClass(
             @PathVariable Long id
-    ) throws Exception {
+    ) {
         cabinClassService.deleteCabinClass(id);
         return ResponseEntity.noContent().build();
     }

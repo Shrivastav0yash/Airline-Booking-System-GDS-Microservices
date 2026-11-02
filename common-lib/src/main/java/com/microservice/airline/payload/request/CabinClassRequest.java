@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 public class CabinClassRequest {
 
-    @NotBlank(message = "Cabin class name is required")
+    @NotNull(message = "Cabin class name is required")
     private CabinClassType name;
 
     @NotBlank(message = "Cabin class code is required")

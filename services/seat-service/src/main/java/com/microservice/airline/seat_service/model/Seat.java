@@ -90,7 +90,9 @@ public class Seat {
     }
 
     public boolean isBookable() {
-        return isAvailable && !isBlocked && isActive;
+        return Boolean.TRUE.equals(isAvailable)
+                && !Boolean.TRUE.equals(isBlocked)
+                && Boolean.TRUE.equals(isActive);
     }
 
     public String getFullPosition() {

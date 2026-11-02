@@ -52,6 +52,8 @@ public class SeatServiceImpl implements SeatService {
                         .columnLetter(getSeatLetter(col).charAt(0))
                         .seatType(type)
                         .seatMap(seatMap)
+                        .createdBy("system") // Replace with actual user if available
+                        .updatedBy("system") // Replace with actual user if available
                         .build();
 
                 seats.add(seat);
